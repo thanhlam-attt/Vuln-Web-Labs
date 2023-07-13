@@ -9,7 +9,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "xss_reflect";
+$dbname = "xss_db";
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 $conn = new mysqli($servername, $username, $password, $dbname);
