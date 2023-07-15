@@ -27,7 +27,7 @@ if (isset($_COOKIE['cookie_name'])) {
 
 <body>
     <header>
-        <a href="\xss\index.php" class="logo">XSS LAB</a>
+        <a href="\xss\index.php" class="logo">LAB</a>
         <a href="\xss\stored_xss\stored.php" class="button">Stored XSS</a>
         <strong class="button user-info">
             <?php if (isset($_COOKIE["cookie_name"])):
@@ -63,7 +63,7 @@ if (isset($_COOKIE['cookie_name'])) {
 
                 <h5 align="center">Vẫn là alert Cookie để win :33</h5>
 
-                <div>
+                <div align="center">
                     <img src=/xss/Image/Image.jpg>
                 </div>
                 <h5>Bình luận về hình ảnh trên:</h5>

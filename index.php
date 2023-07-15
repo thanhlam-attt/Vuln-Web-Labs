@@ -1,3 +1,15 @@
+<?php
+// unset cookies
+if (isset($_SERVER['HTTP_COOKIE'])) {
+  $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+  foreach ($cookies as $cookie) {
+    $parts = explode('=', $cookie);
+    $name = trim($parts[0]);
+    setcookie($name, '', time() - 1000);
+    setcookie($name, '', time() - 1000, '/');
+  }
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,13 +24,15 @@
 
 <body>
   <header>
-    <a href="index.php" class="logo">XSS LAB</a>
+    <a href="index.php" class="logo">LAB</a>
     <a href="\xss\reflected_xss\reflected.php" class="button">Reflected XSS</a>
     <a href="\xss\stored_xss\stored.php" class="button">Stored XSS</a>
     <a href="\xss\dom_xss\dom.php?default=English" class="button">DOM-based XSS</a>
   </header>
-  <script>alert("Chào mừng các hách cơ lỏ đến với trang web của iem <3\nDeveloped by Thànhh!")</script>
-
+  <div align="center">
+    <h4>Chào mừng các hách cơ lỏ đến với trang web của tui!!</h4>
+    <img src=/xss/Image/download.jpg>
+  </div>
 
 
 </body>

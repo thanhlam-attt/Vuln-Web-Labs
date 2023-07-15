@@ -28,7 +28,7 @@ if (isset($_COOKIE['cookie_name'])) {
 
 <body>
     <header>
-        <a href="\xss\index.php" class="logo">XSS LAB</a>
+        <a href="\xss\index.php" class="logo">LAB</a>
         <a href="\xss\dom_xss\dom.php?default=English" class="button">DOM-based XSS</a>
         <strong class="user-info">
             <?php if (isset($_COOKIE["cookie_name"])):

@@ -62,19 +62,10 @@ if (isset($_COOKIE['cookie_name'])) {
           <strong>
             Hints<br>
           </strong>
-          <button id="btn-1" type="button" title="Hint 1" onclick='alert("Hint này chưa nghĩ ra!")'>1</button>
-          <button id="btn-2" type="button" title="Hint 2" onclick='alert("Mã hóa Base64")'>2</button>
+          <button type="button" title="Hint 1" onclick='alert("Alert \"Flag\" to win!")'>1</button>
+          <button type="button" title="Hint 2" onclick='alert("Base64")'>2</button>
+          <button type="button" title="Hint 3" onclick='alert("\"Somethings\" is removed")'>3</button>
         </div>
-
-        <span class="toast large">
-          Hello,
-          <?php
-          $name = isset($_GET['name']) ? $_GET['name'] : '0';
-          $name = urldecode($name);
-          $name = htmlentities($name);
-          echo urldecode($name); 
-          ?>
-        </span>
 
         <form action="reflected.php" method="POST">
           Nhập Flag: <input type="input" name="flag">
@@ -85,11 +76,35 @@ if (isset($_COOKIE['cookie_name'])) {
         if ($flag === "") {
           echo "<p>Chưa nhập flag</p>";
         } else if ($flag === "R3f1eCted_xsS!") {
-          echo '<script>alert("Win rồi!!! +10 uy tín!")</script>';
+          echo '<script>
+                alert("Win rồi!!! +10 uy tín!")
+                setTimeout(function() {
+                          window.location.href = "../another_page/page_demo.php";
+                }, 500);
+                </script>';
+
         } else {
           echo '<script>alert("Flag sai, hãy thử lại!")</script>';
         }
         ?>
+
+        <span class="toast large">
+          Hello,
+          <?php
+          $name = isset($_GET['name']) ? $_GET['name'] : '0';
+          $name = urldecode($name);
+          $name = htmlentities($name);
+          $name = str_replace("Flag", "", $name);
+          $pattern = '/>alert\("Flag"\)/';
+          $pattern_1 = '/alert\("Flag"\)>/';
+          if (preg_match($pattern, urldecode($name)) || preg_match($pattern_1, urldecode($name))) {
+            echo "<script>alert(\"dXNldGhpc2Nvb2tpZXRvY2FwdHVyZWZsYWc\")</script>";
+          }
+          echo urldecode($name);
+          ?>
+        </span>
+
+
       </div>
     </div>
   </div>
