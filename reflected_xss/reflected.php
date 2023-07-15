@@ -53,7 +53,7 @@ if (isset($_COOKIE['cookie_name'])) {
         </ul>
         <h5 align="center">Mô tả: Chiếm lấy cookie Admin và đăng nhập vào user Admin!</h5>
 
-        <form action="\xss\reflected_xss\reflected.php" method="get" accept-charset="utf-8" id="form">
+        <form action="reflected.php" method="get" accept-charset="utf-8" id="form">
           Your name: <input type="text" name="name" placeholder="Enter your name" autofocus required>
           <button type="submit" class="primary" value="Submit!">Submit!</button>
         </form>
@@ -66,51 +66,17 @@ if (isset($_COOKIE['cookie_name'])) {
           <button id="btn-2" type="button" title="Hint 2" onclick='alert("Mã hóa Base64")'>2</button>
         </div>
 
-        <div id="name">
+        <span class="toast large">
+          Hello,
           <?php
-          $name = isset($_GET['name']) ? $_GET['name'] : '';
-          if (!empty($name)):
-            $name = htmlentities($name);
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "xss_db";
-            date_default_timezone_set('Asia/Ho_Chi_Minh');
+          $name = isset($_GET['name']) ? $_GET['name'] : '0';
+          $name = urldecode($name);
+          $name = htmlentities($name);
+          echo urldecode($name); 
+          ?>
+        </span>
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-            }
-
-            try {
-              if (preg_match("/onload/", $name) || preg_match("/location/", $name) || preg_match("/onclick/", $name)
-                || preg_match("/onmouse/", $name) || preg_match("/onkey/", $name) || preg_match("/onprint/", $name)
-                || preg_match("/onchange/", $name) || preg_match("/onfocus/", $name) || preg_match("/onsubmit/", $name)) {
-                echo "<script>alert(\"Hàm/Thuộc tính này đã bị chặn!\")</script>";
-              } else {
-                $sql = "INSERT INTO any_input (input) VALUES ('$name')";
-                if ($conn->query($sql) !== TRUE) {
-                  echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-              }
-            } catch (\Throwable $th) {
-              print("Lỗi gì rùi hjhj!");
-            }
-
-            $conn->close();
-            ?>
-            <span class="toast large">
-              Hello,
-              <?php echo urldecode($name); ?>
-            </span>
-          <?php endif; ?>
-        </div>
-        <?php
-        // Kết nối với cơ sở dữ liệu
-        
-        ?>
-        <form action="\xss\reflected_xss\reflected.php" method="POST">
+        <form action="reflected.php" method="POST">
           Nhập Flag: <input type="input" name="flag">
           <button type="submit" class="primary" value="Submit!">Submit!</button>
         </form>
