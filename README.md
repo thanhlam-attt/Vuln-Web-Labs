@@ -1,1 +1,1 @@
-# XSS_LAB
+# XSS_LAB Chain Bug
