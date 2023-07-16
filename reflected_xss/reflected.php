@@ -54,8 +54,9 @@ if (isset($_COOKIE['cookie_name'])) {
         <h5 align="center">Mô tả: Chiếm lấy cookie Admin và đăng nhập vào user Admin!</h5>
 
         <form action="reflected.php" method="get" accept-charset="utf-8" id="form">
-          Your name: <input type="text" name="name" placeholder="Enter your name" autofocus required>
-          <button type="submit" class="primary" value="Submit!">Submit!</button>
+          <fieldset>Your name: <input type="text" name="name" placeholder="Enter your name" autofocus required>
+            <button type="submit" class="primary" value="Submit!">Submit!</button>
+          </fieldset>
         </form>
 
         <div role="group" class="btn-group">
@@ -68,8 +69,9 @@ if (isset($_COOKIE['cookie_name'])) {
         </div>
 
         <form action="reflected.php" method="POST">
-          Nhập Flag: <input type="input" name="flag">
-          <button type="submit" class="primary" value="Submit!">Submit!</button>
+          <fieldset>Nhập Flag: <input type="input" name="flag">
+            <button type="submit" class="primary" value="Submit!">Submit!</button>
+          </fieldset>
         </form>
         <?php
         $flag = isset($_POST["flag"]) ? $_POST["flag"] : "";
@@ -79,7 +81,7 @@ if (isset($_COOKIE['cookie_name'])) {
           echo '<script>
                 alert("Win rồi!!! +10 uy tín!")
                 setTimeout(function() {
-                          window.location.href = "../another_page/page_demo.php";
+                          window.location.href = "../login/login.php";
                 }, 500);
                 </script>';
 

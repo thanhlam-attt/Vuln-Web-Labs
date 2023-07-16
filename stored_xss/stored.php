@@ -69,18 +69,17 @@ if (isset($_COOKIE['cookie_name'])) {
                 <h5>Bình luận về hình ảnh trên:</h5>
 
                 <!-- Form -->
-                <form id="commentForm" onsubmit="event.preventDefault(); submitForm();">
-                    Username:
-                    <strong>
-                        <?php echo isset($_COOKIE['cookie_name']) ? substr($_COOKIE['cookie_name'], 5) : ''; ?>
-                    </strong><br>
-                    Comment: <br><textarea id="comment" name="comment" rows="3" cols="40" required></textarea><br>
-                    <input type="submit" value="Gửi bình luận">
-                    <!-- Thông báo -->
+                <form id="commentForm" onsubmit="submitForm();">
+                    <fieldset>Username:
+                        <strong>
+                            <?php echo isset($_COOKIE['cookie_name']) ? substr($_COOKIE['cookie_name'], 5) : ''; ?>
+                        </strong><br>
+                        Comment: <br><textarea id="comment" name="comment" rows="3" cols="40" required></textarea><br>
+                        <input type="submit" value="Gửi bình luận">
+                    </fieldset>
                 </form>
 
                 <script>
-                    // Gửi dữ liệu từ form sử dụng AJAX
                     function submitForm() {
                         var xhr = new XMLHttpRequest();
                         var formData = new FormData(document.getElementById("commentForm"));
@@ -101,13 +100,12 @@ if (isset($_COOKIE['cookie_name'])) {
                     </strong>
                     <button type="button" title="Hint 1" onclick='alert("\"Cuc Ki\"")'>1</button>
                     <button type="button" title="Hint 2" onclick='alert("\"Mã hóa Base64\"")'>2</button>
-                    <button type="button" title="Hint 3"
-                        onclick='alert("Load lại trang để đọc comment mới\nSorry vì sự code lỏd này!")'>3</button>
                 </div>
 
                 <form action="stored.php" method="POST">
-                    Nhập Flag: <input type="input" name="flag">
-                    <button type="submit" class="primary" value="Submit!">Submit!</button>
+                    <fieldset>Nhập Flag: <input type="input" name="flag">
+                        <button type="submit" class="primary" value="Submit!">Submit!</button>
+                    </fieldset>
                 </form>
 
                 <?php

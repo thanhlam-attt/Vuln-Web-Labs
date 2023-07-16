@@ -68,41 +68,43 @@ if (isset($_COOKIE['cookie_name'])) {
                 <h5 align="center">Alert Flag!</h5>
 
                 <form name="XSS" method="GET">
-                    <select name="default">
-                        <?php
-                        $lang = isset($_GET['default']) ? $_GET['default'] : '';
-                        $lang = htmlentities($lang);
-                        $lang = urldecode($lang);
-                        $pattern = '/>alert\("Flag"\)/';
-                        $pattern_1 = '/alert\("Flag"\)>/';
-                        if (preg_match($pattern, $lang) || preg_match($pattern_1, $lang)) {
-                            echo '<script>alert("Admin: cookieofdomadmin")</script>';
-                            echo '<script>alert("Chưa xong đâu!")</script>';
-                        }
-                        ?>
-                        <script>
-                            if (document.location.href.indexOf("default=") >= 0) {
-                                var lang = <?php echo json_encode($lang) ?>;
-                                document.write("<option value='" + lang + "'>" + decodeURI(lang) + "</option>");
-                                document.write("<option value='' disabled='disabled'>----</option>");
+                    <fieldset><select name="default">
+                            <?php
+                            $lang = isset($_GET['default']) ? $_GET['default'] : '';
+                            $lang = htmlentities($lang);
+                            $lang = urldecode($lang);
+                            $pattern = '/>alert\("Flag"\)/';
+                            $pattern_1 = '/alert\("Flag"\)>/';
+                            if (preg_match($pattern, $lang) || preg_match($pattern_1, $lang)) {
+                                echo '<script>alert("Admin: cookieofdomadmin")</script>';
+                                echo '<script>alert("Chưa xong đâu!")</script>';
                             }
-                            document.write("<option value='English'>English</option>");
-                            document.write("<option value='French'>French</option>");
-                            document.write("<option value='Spanish'>Spanish</option>");
-                            document.write("<option value='German'>German</option>");
-                        </script>
-                        </selec>
-                        <input type="submit" value="Select" />
-                        <div role="group" class="btn-group">
-                            <strong>
-                                Hints<br>
-                            </strong>
-                            <button id="btn-1" type="button" title="Hint 1" onclick='alert("\"Flag\"")'>1</button>
-                        </div>
+                            ?>
+                            <script>
+                                if (document.location.href.indexOf("default=") >= 0) {
+                                    var lang = <?php echo json_encode($lang) ?>;
+                                    document.write("<option value='" + lang + "'>" + decodeURI(lang) + "</option>");
+                                    document.write("<option value='' disabled='disabled'>----</option>");
+                                }
+                                document.write("<option value='English'>English</option>");
+                                document.write("<option value='French'>French</option>");
+                                document.write("<option value='Spanish'>Spanish</option>");
+                                document.write("<option value='German'>German</option>");
+                            </script>
+                            </selec>
+                            <input type="submit" value="Select" />
+                            <div role="group" class="btn-group">
+                                <strong>
+                                    Hints<br>
+                                </strong>
+                                <button id="btn-1" type="button" title="Hint 1" onclick='alert("\"Flag\"")'>1</button>
+                            </div>
+                    </fieldset>
                 </form>
                 <form action="dom.php?default=English" method="POST">
-                    Nhập Flag: <input type="input" name="flag">
-                    <button type="submit" class="primary" value="Submit!">Submit!</button>
+                    <fieldset>Nhập Flag: <input type="input" name="flag">
+                        <button type="submit" class="primary" value="Submit!">Submit!</button>
+                    </fieldset>
                 </form>
                 <?php
                 $flag = isset($_POST["flag"]) ? $_POST["flag"] : "";
