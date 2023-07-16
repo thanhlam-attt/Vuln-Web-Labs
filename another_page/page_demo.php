@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <?php echo "Chưa có gì đâu!" ?>
+                <?php echo "Lab này sẽ làm về upload file!" ?>
             
             </div>
         </div>

@@ -78,6 +78,23 @@ if (isset($_COOKIE['cookie_name'])) {
                     <input type="submit" value="Gửi bình luận">
                     <!-- Thông báo -->
                 </form>
+
+                <script>
+                    // Gửi dữ liệu từ form sử dụng AJAX
+                    function submitForm() {
+                        var xhr = new XMLHttpRequest();
+                        var formData = new FormData(document.getElementById("commentForm"));
+                        xhr.open("POST", "stored.php", true);
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                // Xử lý kết quả trả về nếu cần thiết
+                                document.getElementById('comment').value = "";
+                            }
+                        };
+                        xhr.send(formData);
+                    }
+                </script>
+
                 <div role="group" class="btn-group">
                     <strong>
                         Hints<br>
@@ -87,10 +104,12 @@ if (isset($_COOKIE['cookie_name'])) {
                     <button type="button" title="Hint 3"
                         onclick='alert("Load lại trang để đọc comment mới\nSorry vì sự code lỏd này!")'>3</button>
                 </div>
-                <form action="\xss\stored_xss\stored.php" method="POST">
+
+                <form action="stored.php" method="POST">
                     Nhập Flag: <input type="input" name="flag">
                     <button type="submit" class="primary" value="Submit!">Submit!</button>
                 </form>
+
                 <?php
                 $flag = isset($_POST["flag"]) ? $_POST["flag"] : "";
                 if ($flag === "") {
@@ -101,26 +120,12 @@ if (isset($_COOKIE['cookie_name'])) {
                     echo '<script>alert("Flag sai, hãy thử lại!")</script>';
                 }
                 ?>
-                <script>
-                    // Gửi dữ liệu từ form sử dụng AJAX
-                    function submitForm() {
-                        var xhr = new XMLHttpRequest();
-                        var formData = new FormData(document.getElementById("commentForm"));
-                        xhr.open("POST", "/xss/stored_xss/stored.php", true);
-                        xhr.onreadystatechange = function () {
-                            if (xhr.readyState === 4 && xhr.status === 200) {
-                                // Xử lý kết quả trả về nếu cần thiết
-                                document.getElementById('comment').value = "";
-                            }
-                        };
-                        xhr.send(formData);
-                    }
-                </script>
+
                 <?php
                 // Kết nối với cơ sở dữ liệu
                 $servername = "localhost";
-                $username = "root";
-                $password = "";
+                $username = "thanh";
+                $password = "thanhlam";
                 $dbname = "xss_db";
                 date_default_timezone_set('Asia/Ho_Chi_Minh');
 

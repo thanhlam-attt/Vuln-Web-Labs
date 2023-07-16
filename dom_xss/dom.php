@@ -100,7 +100,7 @@ if (isset($_COOKIE['cookie_name'])) {
                             <button id="btn-1" type="button" title="Hint 1" onclick='alert("\"Flag\"")'>1</button>
                         </div>
                 </form>
-                <form action="\xss\dom_xss\dom.php?default=English" method="POST">
+                <form action="dom.php?default=English" method="POST">
                     Nhập Flag: <input type="input" name="flag">
                     <button type="submit" class="primary" value="Submit!">Submit!</button>
                 </form>
