@@ -33,19 +33,10 @@
                         <strong>
                             Hints<br>
                         </strong>
-                        <button type="button" title="Hint 1" onclick='alert("Tự tìm hint đi :vv")'>1</button>
+                        <button type="button" title="Hint 1" onclick='alert("Tìm file source code?")'>1</button>
                         <button type="button" title="Hint 2" onclick='alert("Thấy flag tự chuyển sang lab mới, không cần nhập flag đâu :3")'>2</button>
                     </div>
-                    <!-- function password_generated()
-                    {
-                        $ramdom = random_input();
-                        $passwd = "0e" . $ramdom;
-                        return $passwd;
-                    } -->
-                    <!-- $passwd = password_generated();
-                        if (!strcmp($_POST['username'], 'admin') && hash('md4', $_POST['password']) == $passwd) {
-                            echo '<script>alert("$FLAG")</script>';
-                    } -->
+                    
                     <?php
                     function random_input()
                     {

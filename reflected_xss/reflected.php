@@ -81,7 +81,7 @@ if (isset($_COOKIE['cookie_name'])) {
           echo '<script>
                 alert("Win rồi!!! +10 uy tín!")
                 setTimeout(function() {
-                          window.location.href = "../login/login.php";
+                          window.location.href = "../login/file.php";
                 }, 500);
                 </script>';
 
