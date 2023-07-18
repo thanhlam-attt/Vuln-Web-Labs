@@ -1,14 +1,14 @@
 <?php
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
-setcookie('cookie_name', 'I am Attacker');
+setcookie('cookie_name', 'I am Guest');
 if (isset($_COOKIE['cookie_name'])) {
-  if ($_COOKIE['cookie_name'] === 'I am Attacker') {
-    $username = "Attacker";
+  if ($_COOKIE['cookie_name'] === 'I am Guest') {
+    $username = "Guest";
   } elseif ($_COOKIE['cookie_name'] === 'usethiscookietocaptureflag') {
     if ($userAgent === "admin" or $userAgent === "Admin") {
-      $username = "Admin";
+      $username = "User";
     } else {
-      echo "<script>alert(\"Phải là trình duyệt của admin mới được thay đổi cookie hjhj :vv\")</script>";
+      echo "<script>alert(\"Phải là trình duyệt của Admin mới được thay đổi cookie hjhj :vv\")</script>";
     }
   } else {
     $username = "Đừng thay đổi cookie linh tinh :vv";
@@ -36,7 +36,7 @@ if (isset($_COOKIE['cookie_name'])) {
     <strong class="user-info">
       <?php if (isset($_COOKIE["cookie_name"])):
         echo "User: " . $username;
-        if ($username === "Admin") {
+        if ($username === "User") {
           echo '<script>alert("Flag: R3f1eCted_xsS!");</script>';
         }
       endif; ?>
@@ -51,7 +51,7 @@ if (isset($_COOKIE['cookie_name'])) {
             <?php echo "REFLECTED-XSS"; ?>
           </li>
         </ul>
-        <h5 align="center">Mô tả: Chiếm lấy cookie Admin và đăng nhập vào user Admin!</h5>
+        <h5 align="center">Mô tả: Chiếm lấy cookie User và đăng nhập vào User!</h5>
 
         <form action="reflected.php" method="get" accept-charset="utf-8" id="form">
           <fieldset>Your name: <input type="text" name="name" placeholder="Enter your name" autofocus required>

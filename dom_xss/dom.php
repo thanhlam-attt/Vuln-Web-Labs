@@ -1,11 +1,11 @@
 <?php
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
-setcookie('cookie_name', 'I am Attacker');
+setcookie('cookie_name', 'I am Guest');
 if (isset($_COOKIE['cookie_name'])) {
-    if ($_COOKIE['cookie_name'] === 'I am Attacker') {
-        $username = "Attacker";
-    } elseif ($_COOKIE['cookie_name'] === 'cookieofdomadmin') {
-        $username = "Admin";
+    if ($_COOKIE['cookie_name'] === 'I am Guest') {
+        $username = "Guest";
+    } elseif ($_COOKIE['cookie_name'] === 'cookieofdomuser') {
+        $username = "User";
     } else {
         $username = "Đừng thay đổi cookie linh tinh :vv";
     }
@@ -33,7 +33,7 @@ if (isset($_COOKIE['cookie_name'])) {
         <strong class="user-info">
             <?php if (isset($_COOKIE["cookie_name"])):
                 echo "User: " . $username;
-                if ($_COOKIE['cookie_name'] === 'cookieofdomadmin') {
+                if ($_COOKIE['cookie_name'] === 'cookieofdomuser') {
                     $ip_proxy = isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["HTTP_X_FORWARDED_FOR"] : 'null';
                     if ($ip_proxy === 'null') {
                         echo '<script>alert("Địa chỉ ip không thuộc địa chỉ cục bộ");</script>';
@@ -76,7 +76,7 @@ if (isset($_COOKIE['cookie_name'])) {
                             $pattern = '/>alert\("Flag"\)/';
                             $pattern_1 = '/alert\("Flag"\)>/';
                             if (preg_match($pattern, $lang) || preg_match($pattern_1, $lang)) {
-                                echo '<script>alert("Admin: cookieofdomadmin")</script>';
+                                echo '<script>alert("User: cookieofdomuser")</script>';
                                 echo '<script>alert("Chưa xong đâu!")</script>';
                             }
                             ?>

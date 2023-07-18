@@ -1,11 +1,11 @@
 <?php
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
-setcookie('cookie_name', 'I am Attacker');
+setcookie('cookie_name', 'I am Guest');
 if (isset($_COOKIE['cookie_name'])) {
-    if ($_COOKIE['cookie_name'] === 'I am Attacker') {
-        $username = "Attacker";
-    } elseif ($_COOKIE['cookie_name'] === 'Cookieofadmin') {
-        $username = "Admin";
+    if ($_COOKIE['cookie_name'] === 'I am Guest') {
+        $username = "Guest";
+    } elseif ($_COOKIE['cookie_name'] === 'Cookieofuser') {
+        $username = "User";
     } else {
         $username = "Đừng thay đổi cookie linh tinh :vv";
     }
@@ -32,7 +32,7 @@ if (isset($_COOKIE['cookie_name'])) {
         <strong class="button user-info">
             <?php if (isset($_COOKIE["cookie_name"])):
                 echo "User: " . $username;
-                if ($_COOKIE['cookie_name'] === 'Cookieofadmin') {
+                if ($_COOKIE['cookie_name'] === 'Cookieofuser') {
                     $method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'null';
                     if (preg_match("/head/i", $method)) {
                         echo "User: " . $username;
@@ -66,18 +66,17 @@ if (isset($_COOKIE['cookie_name'])) {
                 <div align="center">
                     <img src=/xss/Image/Image.jpg>
                 </div>
-                <h5>Bình luận về hình ảnh trên:</h5>
-
-                <!-- Form -->
-                <form id="commentForm" onsubmit="submitForm();">
-                    <fieldset>Username:
+                <fieldset><!-- Form -->
+                    <legend>Bình luận về hình ảnh trên:</legend>
+                    <form id="commentForm" onsubmit="submitForm();">
+                        Username:
                         <strong>
                             <?php echo isset($_COOKIE['cookie_name']) ? substr($_COOKIE['cookie_name'], 5) : ''; ?>
                         </strong><br>
                         Comment: <br><textarea id="comment" name="comment" rows="3" cols="40" required></textarea><br>
                         <input type="submit" value="Gửi bình luận">
-                    </fieldset>
-                </form>
+                    </form>
+                </fieldset>
 
                 <script>
                     function submitForm() {
@@ -102,11 +101,13 @@ if (isset($_COOKIE['cookie_name'])) {
                     <button type="button" title="Hint 2" onclick='alert("\"Mã hóa Base64\"")'>2</button>
                 </div>
 
-                <form action="stored.php" method="POST">
-                    <fieldset>Nhập Flag: <input type="input" name="flag">
+                <fieldset>
+                    <legend>Nhập Flag</legend>
+                    <form action="stored.php" method="POST">
+                        Nhập Flag: <input type="input" name="flag">
                         <button type="submit" class="primary" value="Submit!">Submit!</button>
-                    </fieldset>
-                </form>
+                    </form>
+                </fieldset>
 
                 <?php
                 $flag = isset($_POST["flag"]) ? $_POST["flag"] : "";
@@ -180,7 +181,7 @@ if (isset($_COOKIE['cookie_name'])) {
                                 preg_match($pattern, nl2br(base64_decode($row["comment"])))
                                 || preg_match($pattern_1, nl2br(base64_decode($row["comment"])))
                             ) {
-                                echo "<script>alert(\"Admin: Cookieofadmin\")</script>";
+                                echo "<script>alert(\"User: Cookieofuser\")</script>";
                             }
                         } else {
                             echo "<td>" . nl2br($row["comment"]) . "</td>";

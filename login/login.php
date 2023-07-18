@@ -13,13 +13,22 @@
 <body>
     <header>
         <a href="\xss\index.php" class="logo">LAB</a>
+        <div class="user-info"><strong>User: </strong> User</div>
+        <style>
+            .user-info {
+                font-size: 17px;
+                float: right;
+                margin-left: 10px;
+                margin-top: 5px;
+            }
+        </style>
     </header>
 
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div align="center">
-                    <h2>Login!</h2>
+                    <h2>Login Admin!</h2>
                     <form role="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                         <fieldset>
                             <label for="username">Username:</label><input type="text" name="username"
@@ -34,9 +43,10 @@
                             Hints<br>
                         </strong>
                         <button type="button" title="Hint 1" onclick='alert("Tìm file source code?")'>1</button>
-                        <button type="button" title="Hint 2" onclick='alert("Thấy flag tự chuyển sang lab mới, không cần nhập flag đâu :3")'>2</button>
+                        <button type="button" title="Hint 2"
+                            onclick='alert("Thấy flag tự chuyển sang lab mới, không cần nhập flag đâu :3")'>2</button>
                     </div>
-                    
+
                     <?php
                     function random_input()
                     {
@@ -55,6 +65,11 @@
                         $FLAG = "Hello WORLD!!";
                         if (!strcmp($_POST['username'], 'admin') && hash('md4', $_POST['password']) == $passwd) {
                             echo '<script>alert("Flag: c0d3_n9U_l@_cHeT!")</script>';
+                            echo '<script>
+                                  setTimeout(function() {
+                                  window.location.href = "../file_upload/admin_page.php";
+                            }, 500);
+                                  </script>';
                         } else {
                             echo '<script>alert("Wrong Username or Password")</script>';
                         }
