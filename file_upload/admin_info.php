@@ -70,15 +70,19 @@
 
                 if (isset($_FILES['file'])) {
                     $file_upload = $_FILES['file'];
-                    $upload_file = $upload_dir . md5($file_upload['name']);  // Trỏ đến file upload
-                    $file_upload_tmp = $file_upload['tmp_name'];        // Trỏ đến biến tạm lưu trữ file
-
-                    move_uploaded_file($file_upload_tmp, $upload_file);
-                    if(exif_imagetype($upload_file)){
-                        echo "The file ". htmlspecialchars($upload_file). " has been uploaded.";
-                    }else{
-                        unlink($upload_file);
-                        echo "Sorry, there was an error uploading your file.";
+                    $upload_file = $upload_dir . md5($file_upload['name']); // Trỏ đến file upload
+                    $file_upload_tmp = $file_upload['tmp_name']; // Trỏ đến biến tạm lưu trữ file
+                
+                    if (file_exists($upload_file)) {
+                        echo "File " . htmlspecialchars($upload_file) . " đã tồn tại!";
+                    } else {
+                        move_uploaded_file($file_upload_tmp, $upload_file);
+                        if (exif_imagetype($upload_file)) {
+                            echo "File " . htmlspecialchars($upload_file) . " đã được upload thành công!";
+                        } else {
+                            unlink($upload_file);
+                            echo "Không thể upload file này lên!";
+                        }
                     }
 
                     // if (exif_imagetype($file_upload_tmp)) {
@@ -91,7 +95,7 @@
                     // } else {
                     //     die("Your upload file is not an image!");
                     // }
-
+                
 
                     // // Validate mime type of the uploaded file
                     // $allowed_mime_types = array('image/jpeg', 'image/png', 'image/gif');
