@@ -31,7 +31,7 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
   </header>
   <div align="center">
     <h4>Chào mừng các hách cơ lỏ đến với trang web của tui!!</h4>
-    <img src=/xss/Image/download.jpg>
+    <img src=Image/download.jpg>
   </div>
 
 

@@ -1,3 +1,8 @@
+
+
+<!-- include(file_upload/avatar/flag.html) -->
+
+
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>File Upload</title>
     <link href="/xss/Image/favicon.ico" rel="icon" type="image/x-icon">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/2.3.4/mini-dark.min.css"> -->
     <style>
         .user-info {
             size: 10px;
@@ -70,7 +74,7 @@
 
                 if (isset($_FILES['file'])) {
                     $file_upload = $_FILES['file'];
-                    $upload_file = $upload_dir . md5($file_upload['name']); // Trỏ đến file upload
+                    $upload_file = $upload_dir . $file_upload['name']; // Trỏ đến file upload
                     $file_upload_tmp = $file_upload['tmp_name']; // Trỏ đến biến tạm lưu trữ file
                 
                     if (file_exists($upload_file)) {
