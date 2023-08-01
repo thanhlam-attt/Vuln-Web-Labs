@@ -20,7 +20,7 @@ if (isset($_COOKIE['cookie_name'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DOM-BASED XSS</title>
-    <link href="/xss/Image/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../Image/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/2.3.4/mini-dark.min.css">
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'"> -->
 
@@ -28,8 +28,8 @@ if (isset($_COOKIE['cookie_name'])) {
 
 <body>
     <header>
-        <a href="\xss\index.php" class="logo">LAB</a>
-        <a href="\xss\dom_xss\dom.php?default=English" class="button">DOM-based XSS</a>
+        <a href="..\index.php" class="logo">LAB</a>
+        <a href="dom.php?default=English" class="button">DOM-based XSS</a>
         <strong class="user-info">
             <?php if (isset($_COOKIE["cookie_name"])):
                 echo "User: " . $username;

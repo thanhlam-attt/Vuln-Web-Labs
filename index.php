@@ -25,9 +25,9 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
 <body>
   <header>
     <a href="index.php" class="logo">LAB</a>
-    <a href="\xss\reflected_xss\reflected.php" class="button">Reflected XSS</a>
-    <a href="\xss\stored_xss\stored.php" class="button">Stored XSS</a>
-    <a href="\xss\dom_xss\dom.php?default=English" class="button">DOM-based XSS</a>
+    <a href="reflected_xss\reflected.php" class="button">Reflected XSS</a>
+    <a href="stored_xss\stored.php" class="button">Stored XSS</a>
+    <a href="dom_xss\dom.php?default=English" class="button">DOM-based XSS</a>
   </header>
   <div align="center">
     <h4>Chào mừng các hách cơ lỏ đến với trang web của tui!!</h4>

@@ -24,15 +24,15 @@ if (isset($_COOKIE['cookie_name'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>XSS - Cross Site Scripting</title>
-  <link href="/xss/Image/favicon.ico" rel="icon" type="image/x-icon">
+  <link href="../Image/favicon.ico" rel="icon" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/2.3.4/mini-dark.min.css">
 </head>
 
 <body>
   <header>
 
-    <a href="\xss\index.php" class="logo">XSS LAB</a>
-    <a href="\xss\reflected_xss\reflected.php" class="button">Reflected XSS</a>
+    <a href="..\index.php" class="logo">XSS LAB</a>
+    <a href="reflected.php" class="button">Reflected XSS</a>
     <strong class="user-info">
       <?php if (isset($_COOKIE["cookie_name"])):
         echo "User: " . $username;
